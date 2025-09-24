@@ -1,0 +1,124 @@
+{
+  "workflow_name": "Smart Email Triage System",
+  "workflow_type": "Python Automation",
+  "version": "1.0",
+  "created_date": "2025-09-24",
+  "description": "AI-driven email classification and Slack alerting system",
+  
+  "workflow_steps": [
+    {
+      "step": 1,
+      "name": "Email Input",
+      "type": "trigger",
+      "description": "Receives incoming customer emails",
+      "implementation": "sample_emails list in main() function",
+      "inputs": ["sender", "subject", "content"],
+      "outputs": ["email_data"]
+    },
+    {
+      "step": 2,
+      "name": "AI Classification",
+      "type": "process",
+      "description": "Classifies email into Product Support, Billing, or General Inquiry",
+      "implementation": "classify_and_summarize_email() method",
+      "ai_model": "Rule-based (replaceable with OpenAI/Claude)",
+      "inputs": ["email_content", "sender"],
+      "outputs": ["category", "summary"]
+    },
+    {
+      "step": 3,
+      "name": "Keyword Extraction",
+      "type": "process", 
+      "description": "Extracts meaningful keywords for analytics",
+      "implementation": "extract_keywords() method",
+      "inputs": ["email_content"],
+      "outputs": ["keywords_list"]
+    },
+    {
+      "step": 4,
+      "name": "Slack Alert",
+      "type": "notification",
+      "description": "Sends alert to appropriate Slack channel",
+      "implementation": "send_slack_alert() method",
+      "channel_mapping": {
+        "Product Support": "#product-support",
+        "Billing": "#billing", 
+        "General Inquiry": "#general-inquiry"
+      },
+      "inputs": ["category", "summary", "sender"],
+      "outputs": ["slack_message_sent"]
+    },
+    {
+      "step": 5,
+      "name": "Data Logging",
+      "type": "storage",
+      "description": "Logs processed emails to CSV and JSON",
+      "implementation": "save_to_csv() and save_to_json() methods",
+      "outputs": ["email_triage_log.csv", "email_triage_log.json"]
+    },
+    {
+      "step": 6,
+      "name": "Analytics Generation",
+      "type": "analytics",
+      "description": "Generates top 5 keywords per category",
+      "implementation": "generate_keyword_analytics() method",
+      "inputs": ["all_processed_emails"],
+      "outputs": ["keyword_analytics"]
+    }
+  ],
+  
+  "integrations": {
+    "current": [
+      "Python built-in libraries",
+      "Console output (simulated Slack)",
+      "File system (CSV/JSON storage)"
+    ],
+    "production_ready": [
+      "OpenAI API (for real AI classification)",
+      "Claude API (alternative AI provider)",
+      "Slack Web API (for real notifications)",
+      "Gmail API (for email input)",
+      "Google Sheets API (for enhanced logging)"
+    ]
+  },
+  
+  "configuration": {
+    "categories": ["Product Support", "Billing", "General Inquiry"],
+    "output_files": ["email_triage_log.csv", "email_triage_log.json"],
+    "keyword_limit": 5,
+    "summary_max_length": 100
+  },
+  
+  "deployment": {
+    "current": "Local Python execution",
+    "recommended_production": [
+      "AWS Lambda + SES",
+      "Google Cloud Functions + Gmail API", 
+      "Azure Functions + Office 365",
+      "Heroku + Email webhooks"
+    ]
+  },
+  
+  "files_included": [
+    {
+      "filename": "email_triage.py",
+      "type": "main_script",
+      "description": "Complete workflow implementation"
+    },
+    {
+      "filename": "requirements.txt", 
+      "type": "dependencies",
+      "description": "Python package requirements"
+    },
+    {
+      "filename": "README.md",
+      "type": "documentation", 
+      "description": "Setup and usage instructions"
+    },
+    {
+      "filename": "workflow_export.json",
+      "type": "workflow_definition",
+      "description": "This workflow structure definition"
+    }
+  ]
+}
