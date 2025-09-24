@@ -173,19 +173,19 @@ def main():
     
     # Process each email
     for i, email in enumerate(sample_emails, 1):
-        print(f"\n📧 Processing Email {i}/{len(sample_emails)}...")
+        print(f"\n Processing Email {i}/{len(sample_emails)}...")
         processed_email = triage_system.process_email(email)
         triage_system.send_slack_alert(processed_email)
     
     # Generate analytics
-    print(f"\n📊 KEYWORD ANALYTICS:")
+    print(f"\n KEYWORD ANALYTICS:")
     print("=" * 30)
     analytics = triage_system.generate_keyword_analytics()
     for category, keywords in analytics.items():
         print(f"{category}: {', '.join(keywords) if keywords else 'No keywords'}")
     
     # Save results
-    print(f"\n💾 SAVING RESULTS:")
+    print(f"\n SAVING RESULTS:")
     print("=" * 20)
     triage_system.save_to_csv()
     triage_system.save_to_json()
@@ -197,13 +197,14 @@ def main():
         category = email['category']
         category_counts[category] = category_counts.get(category, 0) + 1
     
-    print(f"\n📈 SUMMARY:")
+    print(f"\n SUMMARY:")
     print("=" * 15)
     print(f"Total emails processed: {total_emails}")
     for category, count in category_counts.items():
         print(f"{category}: {count} emails")
     
-    print(f"\n✅ Email triage workflow completed successfully!")
+    print(f"\n Email triage workflow completed successfully!")
 
 if __name__ == "__main__":
+
     main()
