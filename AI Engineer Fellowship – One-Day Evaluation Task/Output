@@ -1,0 +1,53 @@
+ Smart Email Triage System Starting...
+==================================================
+
+ Processing Email 1/5...
+
+   SLACK ALERT SENT TO #product-support:
+   Customer john.doe@example.com needs help with product support: Login not working I can't log into my account...
+   From: john.doe@example.com
+
+ Processing Email 2/5...
+
+   SLACK ALERT SENT TO #billing:
+   Customer sarah.smith@company.com needs help with billing: Billing Question Hi, I was charged $99 last month but I thought my subscription was only $49...
+   From: sarah.smith@company.com
+
+ Processing Email 3/5...
+
+   SLACK ALERT SENT TO #general-inquiry:
+   Customer mike.wilson@startup.io needs help with general inquiry: Partnership Inquiry Hello, we're interested in exploring a potential partnership opportunity...
+   From: mike.wilson@startup.io
+
+ Processing Email 4/5...
+
+   SLACK ALERT SENT TO #product-support:
+   Customer lisa.brown@tech.com needs help with product support: Feature Request - Dark Mode Love your product! Would it be possible to add a dark mode feature? Many...
+   From: lisa.brown@tech.com
+
+ Processing Email 5/5...
+
+   SLACK ALERT SENT TO #billing:
+   Customer david.lee@business.org needs help with billing: Refund Request I need to cancel my subscription and get a refund for this month...
+   From: david.lee@business.org
+
+ KEYWORD ANALYTICS:
+==============================
+Product Support: this, feature, dark, mode, login
+Billing: this, billing, month, subscription, refund
+General Inquiry: partnership, inquiry, hello, interested, exploring
+
+ SAVING RESULTS:
+====================
+
+Results saved to email_triage_log.csv
+Results saved to email_triage_log.json
+
+ SUMMARY:
+===============
+Total emails processed: 5
+Product Support: 2 emails
+Billing: 2 emails
+General Inquiry: 1 emails
+
+Email triage workflow completed successfully!
